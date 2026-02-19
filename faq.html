@@ -1,0 +1,145 @@
+<!DOCTYPE html> <html lang=ja>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>FAQ – 質問と回答</title>
+<style>
+  :root{--brand-dark:#4E342E;--brand:#A47148;--bg:#fff;--bg-soft:#faf7f2}
+  html,body{margin:0;padding:0;font-family:Montserrat,Arial,sans-serif;background:var(--bg-soft);color:#222}
+  .container{max-width:1080px;margin:0 auto;padding:24px 16px}
+  header{background:#fff;border-bottom:1px solid #eee}
+  header .container{display:flex;gap:16px;align-items:center;justify-content:space-between}
+  .brand{color:var(--brand-dark);font-weight:700}
+  a.back{color:var(--brand-dark);text-decoration:none}
+  a.back:hover{text-decoration:underline}
+  h1{margin:12px 0 0;color:var(--brand-dark);font-weight:700}
+
+  /* A. カテゴリーナビゲーション */
+  .categories{display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:12px;margin:20px 0}
+  .cat-btn{
+    display:flex;align-items:center;gap:10px;justify-content:center;
+    padding:14px;border-radius:12px;border:1px solid #e6e2de;background:#fff;color:var(--brand-dark);
+    cursor:pointer;font-weight:700;transition:all .15s ease
+  }
+  .cat-btn .icon{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--brand);color:#fff;font-weight:800}
+  .cat-btn:hover{border-color:var(--brand);box-shadow:0 2px 10px rgba(164,113,72,.15)}
+  .cat-btn.active{background:linear-gradient(0deg,rgba(164,113,72,.08),rgba(164,113,72,.08)),#fff;border-color:var(--brand)}
+
+  /* B. アコーディオン（details/summary） */
+  .faq-section{background:#fff;border:1px solid #eee;border-radius:14px;padding:10px}
+  .faq-group{display:none}
+  .faq-group.active{display:block}
+  details{border-bottom:1px solid #eee}
+  details:last-child{border-bottom:0}
+  summary{
+    list-style:none;cursor:pointer;padding:16px;font-weight:700;color:var(--brand-dark);display:flex;align-items:center;gap:10px
+  }
+  summary::-webkit-details-marker{display:none}
+  .chev{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--brand)}
+  details[open] .chev{transform:rotate(90deg);background:var(--brand-dark)}
+  .answer{padding:0 16px 16px;color:#333;line-height:1.8}
+
+  /* レスポンシブ */
+  @media (max-width: 860px){
+    .categories{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width: 520px){
+    .categories{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class=container>
+      <div class=brand>FAQ – 質問と回答</div>
+      <nav><a href="index.html" class=back>← トップへ戻る</a></nav>
+    </div>
+  </header>
+
+  <main class=container>
+    <!-- A. カテゴリー選択 -->
+    <section aria-label="FAQ カテゴリー">
+      <div class=categories id=catNav>
+        <button class="cat-btn active" data-target="cat-products"><span class=icon>☕</span>製品について</button>
+        <button class="cat-btn" data-target="cat-shipping"><span class=icon>🚚</span>注文・配送</button>
+        <button class="cat-btn" data-target="cat-quality"><span class=icon>🌿</span>品質・産地</button>
+        <button class="cat-btn" data-target="cat-returns"><span class=icon>↩</span>返品・交換</button>
+      </div>
+    </section>
+
+    <!-- B. アコーディオン回答 -->
+    <section class="faq-section">
+      <!-- 製品について -->
+      <div class="faq-group active" id=cat-products>
+        <details>
+          <summary><span class=chev>›</span>美味しい淹れ方は？</summary>
+          <div class=answer>90〜95℃の湯で抽出すると香りが立ち、雑味を抑えられます。お好みでお湯170–200mlに対し粉末1本を目安に、先に少量を溶かしてから全量を注ぐと風味が均一になります。</div>
+        </details>
+        <details>
+          <summary><span class=chev>›</span>賞味期限は？</summary>
+          <div class=answer>未開封で製造より12〜18か月を目安としています。直射日光・高温多湿を避けて保管してください。開封後はお早めにお召し上がりください。</div>
+        </details>
+        <details>
+          <summary><span class=chev>›</span>保存方法は？</summary>
+          <div class=answer>常温・乾燥した場所に保管してください。香り移りを防ぐため、強い香りの食材の近くは避けてください。</div>
+        </details>
+      </div>
+
+      <!-- 注文・配送 -->
+      <div class="faq-group" id=cat-shipping>
+        <details>
+          <summary><span class=chev>›</span>お届け日数は？</summary>
+          <div class=answer>通常、決済完了から1〜3営業日で出荷、出荷から1〜3日で到着します。繁忙期・一部地域では前後する場合があります。</div>
+        </details>
+        <details>
+          <summary><span class=chev>›</span>配送料金は？</summary>
+          <div class=answer>ご注文金額◯◯円以上で送料無料、未満は全国一律◯◯円です。キャンペーン適用時はカート内で自動反映されます。</div>
+        </details>
+        <details>
+          <summary><span class=chev>›</span>配送エリアは？</summary>
+          <div class=answer>日本国内の主要エリアに対応しています。離島・一部地域は追加日数または別料金となる場合があります。</div>
+        </details>
+      </div>
+
+      <!-- 品質・産地 -->
+      <div class="faq-group" id=cat-quality>
+        <details>
+          <summary><span class=chev>›</span>ダラット産原料のこだわりは？</summary>
+          <div class=answer>高地ならではの寒暖差と肥沃な土壌で育った豆を厳選。生産から加工まで一貫管理し、雑味を抑えたクリアな味わいを実現しています。</div>
+        </details>
+        <details>
+          <summary><span class=chev>›</span>栄養情報は？</summary>
+          <div class=answer>1杯あたりのカロリー・糖質などの参考値を商品パッケージに記載しています。アレルゲン情報も併せてご確認ください。</div>
+        </details>
+      </div>
+
+      <!-- 返品・交換 -->
+      <div class="faq-group" id=cat-returns>
+        <details>
+          <summary><span class=chev>›</span>返品ポリシーは？</summary>
+          <div class=answer>未開封・未使用に限り、商品到着後◯日以内で返品を承ります。事前にお問い合わせフォームよりご連絡ください。</div>
+        </details>
+        <details>
+          <summary><span class=chev>›</span>キャンセル手順は？</summary>
+          <div class=answer>出荷準備前であればキャンセル可能です。マイページまたはお問い合わせフォームからご依頼ください。</div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+<script>
+  // カテゴリー切替
+  const nav = document.getElementById('catNav');
+  const groups = Array.from(document.querySelectorAll('.faq-group'));
+  nav.addEventListener('click', (e) => {
+    const btn = e.target.closest('.cat-btn');
+    if (!btn) return;
+    const target = btn.dataset.target;
+    nav.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b===btn));
+    groups.forEach(g => g.classList.toggle('active', g.id===target));
+    // すべて閉じる
+    groups.forEach(g => g.querySelectorAll('details[open]').forEach(d => d.removeAttribute('open')));
+  });
+</script>
+</body>
+</html>
